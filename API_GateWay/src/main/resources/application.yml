@@ -1,0 +1,38 @@
+server:
+  port: 9005
+  eureka:
+    instance:
+      hostname: localhost
+  spring:
+    application:
+      name: API_GateWay
+    cloud:
+      gateway:
+        routes:
+          - id: BOOKSERVICE
+          - uri: lb://BOOKSERVICE
+            predicates:
+              - path= /book/**
+
+              - id: USER-CLIENT
+                -url: lb://USER-CLIENT
+                predicates:
+                  -path= /user/**
+
+              -id: CART-SERVICE
+                     - url: lb://CART-SERVICE
+                     predicates:
+                       - path=/cart/**
+
+                       - id: ORDERSERVICE
+                         -url: lb://ORDERSERVICE
+                         predicates:
+                           - path=/order/**
+
+
+
+
+
+
+
+
