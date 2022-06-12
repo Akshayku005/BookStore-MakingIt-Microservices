@@ -27,8 +27,8 @@ public class BookStoreExceptionHandler {
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(BookStoreException.class)
-    public ResponseEntity<ResponseDTO> handleBookStoreException(BookStoreException exception) {
+    @ExceptionHandler(BookException.class)
+    public ResponseEntity<ResponseDTO> handleBookStoreException(BookException exception) {
         ResponseDTO response = new ResponseDTO("Invalid input", exception.getMessage());
         return new ResponseEntity<ResponseDTO>(response, HttpStatus.BAD_REQUEST);
     }

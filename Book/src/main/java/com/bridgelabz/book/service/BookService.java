@@ -23,7 +23,6 @@ public class BookService implements IBookService {
         return book;
     }
 
-
     @Override
     public List<Book> getAllBooks() {
         List<Book> list = repo.findAll();
@@ -42,6 +41,7 @@ public class BookService implements IBookService {
         }
         return book.get();
     }
+
     @Override
     public Book getbookByBookName(String bookName) {
         Optional<Book> book = repo.findByBookName(bookName);
@@ -104,12 +104,10 @@ public class BookService implements IBookService {
         return repo.save(book);
     }
 
-
-
     @Override
     public Book getbookByIdAPI(Integer bookId) {
         Optional<Book> book = repo.findById(bookId);
-        if(book.isEmpty()) {
+        if (book.isEmpty()) {
             throw new BookException("There are no Books with given id");
         }
         return book.get();

@@ -27,11 +27,11 @@ public class OrderService implements IOrderService {
 
     @Override
     public Order insertOrder(OrderDTO dto) {
-        Object user = restTemplate.getForObject("http://USER-CLIENT/user/findById/" + dto.getUserId(), Object.class);
+        Object user = restTemplate.getForObject("http://localhost:9002/user/findById/" + dto.getUserId(), Object.class);
         if (user.equals(null)) {
             throw new UserException("Invalid user id...please provide valid user id");
         } else {
-            Book book = restTemplate.getForObject("http://BOOKSERVICE/book/getBook/" + dto.getBookId(), Book.class);
+            Book book = restTemplate.getForObject("http://localhost:9001/book/getBook/" + dto.getBookId(), Book.class);
             if (book.equals(null)) {
                 throw new BookException("Invalid book id...please provide valid book id");
             } else {
@@ -69,7 +69,7 @@ public class OrderService implements IOrderService {
         if (order.isPresent()) {
             throw new OrderException("Invalid Order Id...please provide valid Order id");
         }
-        Object user = restTemplate.getForObject("http://USER-CLIENT/user/findById/" + dto.getUserId(), Object.class);
+        Object user = restTemplate.getForObject("http://USER-SERVICE/user/findById/" + dto.getUserId(), Object.class);
         if (user.equals(null)) {
             throw new UserException("Invalid user id...please provide valid user id");
         }

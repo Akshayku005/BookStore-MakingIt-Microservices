@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 public class OrderServiceApplication {
     @Bean
-    @LoadBalanced
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }

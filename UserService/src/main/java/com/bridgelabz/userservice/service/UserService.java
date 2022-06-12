@@ -3,7 +3,7 @@ package com.bridgelabz.userservice.service;
 import com.bridgelabz.userservice.dto.ResponseDTO;
 import com.bridgelabz.userservice.dto.UserDTO;
 import com.bridgelabz.userservice.dto.UserLoginDTO;
-import com.bridgelabz.userservice.exception.BookStoreException;
+import com.bridgelabz.userservice.exception.BookException;
 import com.bridgelabz.userservice.model.UserRegistration;
 import com.bridgelabz.userservice.repository.UserRepository;
 import com.bridgelabz.userservice.util.EmailSenderService;
@@ -71,7 +71,7 @@ public class UserService implements IUserService {
             return getUser;
 
         } else {
-            throw new BookStoreException("Record for provided userId is not found");
+            throw new BookException("Record for provided userId is not found");
         }
     }
 
@@ -107,7 +107,7 @@ public class UserService implements IUserService {
             return newBook;
 
         }
-        throw new BookStoreException("Book Details for email not found");
+        throw new BookException("Book Details for email not found");
     }
 
     @Override
@@ -136,14 +136,14 @@ public class UserService implements IUserService {
             return newBook;
 
         }
-        throw new BookStoreException("User Details for id not found");
+        throw new BookException("User Details for id not found");
     }
 
     @Override
     public UserRegistration getByIdAPI(Integer userId) {
         Optional<UserRegistration> user = userRepository.findById(userId);
         if (user.isEmpty()) {
-            throw new BookStoreException("There are no users with given id");
+            throw new BookException("There are no users with given id");
         }
         return user.get();
 
