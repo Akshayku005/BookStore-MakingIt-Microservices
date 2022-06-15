@@ -34,8 +34,8 @@ public class UserService implements IUserService {
         UserRegistration newUser = new UserRegistration(userDTO);
         userRepository.save(newUser);
         String token = util.createToken(newUser.getUserId());
-        mailService.sendEmail(newUser.getEmail(), "Test Email", "Registered SuccessFully, hii: "
-                + newUser.getFirstName() + "Please Click here to get data-> "
+        mailService.sendEmail(newUser.getEmail(), "User Registration", " Hi " +newUser.getFirstName()+
+                " Your User Registered SuccessFully Completed. Please Click here to get data-> "
                 + "http://localhost:9002/user/verify/" + token);
         return token;
     }
@@ -103,7 +103,8 @@ public class UserService implements IUserService {
             UserRegistration newBook = new UserRegistration(updateUser.get().getUserId(), userDTO);
             userRepository.save(newBook);
             String token = util.createToken(newBook.getUserId());
-            mailService.sendEmail(newBook.getEmail(), "Welcome " + newBook.getFirstName(), "Click here \n http://localhost:9002/user/update/" + token);
+            mailService.sendEmail(newBook.getEmail(), "Welcome " + newBook.getFirstName(),
+                    "Click here \n http://localhost:9002/user/update/" + token);
             return newBook;
 
         }

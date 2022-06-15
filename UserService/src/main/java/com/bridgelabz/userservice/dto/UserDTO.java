@@ -8,10 +8,10 @@ import javax.validation.constraints.Pattern;
 
 
 public @Data class UserDTO {
-    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "User firstName is Not valid")
+    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "User firstName is Not valid. given first letter in upper case")
     public String firstName;
 
-    @Pattern(regexp = "[A-Za-z\\s]+", message = " Lastname is invalid!")
+    @Pattern(regexp = "[A-Za-z\\s]+", message = " User lastname is invalid!. Given first letter in upper case")
     public String lastName;
 
     @Email

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
+
 import java.util.List;
 
 
@@ -36,7 +36,7 @@ public class OrderController {
     }
 
     @GetMapping("/getById/{orderId}")
-    public ResponseEntity<ResponseDTO> getById(@PathVariable Integer orderId){
+    public ResponseEntity<ResponseDTO> getById(@PathVariable("orderId") Integer orderId){
         Order order = service.getByID(orderId);
         ResponseDTO response = new ResponseDTO("Order Retrieved : ", order);
         return new ResponseEntity<ResponseDTO>(response,HttpStatus.OK);

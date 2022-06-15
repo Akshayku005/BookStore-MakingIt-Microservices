@@ -1,7 +1,17 @@
 package com.bridgelabz.orderservice.exception;
 
+import org.springframework.http.HttpStatus;
+
 public class UserException extends RuntimeException{
-    public UserException(String message){
+    private String message;
+    private HttpStatus httpStatus;
+
+    public UserException( HttpStatus httpStatus, String message) {
+        super();
+        this.httpStatus = httpStatus;
+        this.message = message;
+    }
+    public UserException(String message) {
         super(message);
     }
 }

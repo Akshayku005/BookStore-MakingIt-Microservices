@@ -1,19 +1,13 @@
 package com.bridgelabz.orderservice.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResponseDTO {
     private String message;
-    private Object order;
-
-    public ResponseDTO(String message, Object order) {
-        super();
-        this.message = message;
-        this.order = order;
-    }
-
-    public ResponseDTO() {
-        super();
-    }
+    private Object data;
 }
